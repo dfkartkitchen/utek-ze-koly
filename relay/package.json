@@ -1,5 +1,5 @@
 {
-  "name": "utek-relay",
+  "name": "utek-ze-koly-relay",
   "private": true,
   "scripts": {
     "dev": "wrangler dev",

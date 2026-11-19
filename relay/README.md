@@ -4,7 +4,14 @@ Netlify umí jen statické stránky, ne trvalé spojení mezi hráči. Proto mul
 tento malý server na Cloudflare Workers (free plán). Každá herní místnost (kód hry) je jeden Durable Object,
 který si pamatuje stav připojených hráčů a rozesílá změny ostatním. Žádná data se neukládají natrvalo.
 
-## Nasazení (jednou, na tvém počítači, potřebuješ Node.js 18+)
+## Nasazení
+
+Server je nasazený přes **Cloudflare → Workers & Pages → Import a repository** z tohoto repozitáře
+(projekt `utek-ze-koly`, Root directory `/relay`, Deploy command `npx wrangler deploy`).
+Každý push do `main` ho na Cloudflare sestaví znovu. Adresa: `https://utek-ze-koly.dfkartkitchen.workers.dev`.
+Název projektu na Cloudflare musí odpovídat `name` ve `wrangler.toml`.
+
+### Alternativa: nasazení z vlastního počítače (Node.js 18+)
 
 ```bash
 cd relay
@@ -13,13 +20,13 @@ npx wrangler login      # otevře prohlížeč, přihlas se / zaregistruj na Clo
 npx wrangler deploy
 ```
 
-Wrangler na konci vypíše adresu, např. `https://utek-relay.tvuj-ucet.workers.dev`.
+Wrangler na konci vypíše adresu, např. `https://utek-ze-koly.tvuj-ucet.workers.dev`.
 Otevři ji v prohlížeči – má se ukázat „Útěk ze školy relay OK“.
 
 Pak v kořeni projektu uprav `mp-config.js`:
 
 ```js
-window.UTEK_RELAY = "wss://utek-relay.tvuj-ucet.workers.dev";
+window.UTEK_RELAY = "wss://utek-ze-koly.tvuj-ucet.workers.dev";
 ```
 
 (pozor: `wss://` místo `https://`). Commit + push a Netlify hru nasadí s funkčním multiplayerem.
