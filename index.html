@@ -175,9 +175,9 @@
   <div id="tbtns">
     <button class="tb" id="tbRun">🏃<span>Běh</span></button>
     <button class="tb" id="tbTape">🧻<span>Páska</span></button>
-    <button class="tb" id="tbToilet">🚽<span>Záchod</span></button>
+    <button class="tb" id="tbToilet">🎫<span>Propustka</span></button>
     <button class="tb" id="tbDog">🐕<span>Pes</span></button>
-    <button class="tb" id="tbPee">💦<span>Čůrat</span></button>
+    <button class="tb" id="tbSlip">🥿<span>Papuče</span></button>
     <button class="tb" id="tbInv">🎒<span>Inventář</span></button>
     <button class="tb" id="tbLook">🔦<span>Rovně</span></button>
   </div>
@@ -197,11 +197,13 @@
   <div class="box"><div class="label">Klíče</div><div class="val" id="keyVal">0 / 3</div></div>
   <div class="box"><div class="label">Podlaží</div><div class="val" id="floorVal">Přízemí</div><div id="stam"><div id="stamFill"></div></div></div>
   <div class="box"><div class="label">Lepicí pásky</div><div class="val" id="tapeVal" style="color:#e9df9a">0</div><div class="label" id="tapeState">žádná páska</div></div>
+  <div class="box"><div class="label">Propustky</div><div class="val" id="passVal" style="color:#f4f4f2">5</div><div class="label">X = hodit</div></div>
+  <div class="box" id="invisBox" style="display:none"><div class="label">Papuče</div><div class="val" id="invisVal" style="color:#8fd3ff">10 s</div><div class="label">neviditelný</div></div>
   <div class="box"><div class="label">Mince</div><div class="val" id="coinVal" style="color:#f2c14e">1</div><div class="label" id="runState">běh: 0 s</div></div>
   <div id="stamWrap"><div class="stLbl"><span>🏃 VÝDRŽ</span><span id="stamTxt">0 s · kup si běh v kantýně</span></div><div id="stamBar"><div id="stamBarFill"></div></div></div>
 </div>
 <div id="inv" class="hidden"><div class="invCard"><div class="invHead"><span>🎒 Inventář</span><button id="invClose" aria-label="Zavřít">✕</button></div><div class="invRow" id="invFixed"></div><div class="invGrid" id="invGrid"></div><div class="invInfo" id="invInfo"></div></div></div>
-<div id="toast"></div><div id="frenzy"></div><div id="hint"></div><div id="stun"></div><div id="vignette"></div><div id="cross"></div>
+<div id="toast"></div><div id="frenzy"></div><div id="hint"></div><div id="stun"></div><div id="vignette"></div><div id="invisFx" style="position:fixed;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .5s;background:radial-gradient(ellipse at center,rgba(120,200,255,0) 45%,rgba(120,200,255,.42) 100%)"></div><div id="cross"></div>
 
 <div class="overlay" id="start"><div class="card">
   <h1 class="spooky">Útěk ze školy</h1>
@@ -210,6 +212,8 @@
     <div>🔑 Ve škole je schováno <span>5 klíčů</span>, k útěku ti stačí 3.</div>
     <div>🪙 Začínáš s 1 mincí a dalších 7 je schovaných po škole. V <span>kantýně</span> v přízemí si za 1 minci koupíš 30 s běhu (klávesa 1), nebo vyměníš všechny mince za čas (klávesa 2).</div>
     <div>🧻 V každém patře leží <span>lepicí páska</span>. Šlápni na ni a seber ji. Když vidíš strašidlo, hoď ji (klik / F) a na 10 s ho omráčíš. Další hod je možný až po nalezení dalšího klíče.</div>
+    <div>🎫 Máš <span>5 propustek</span> (klávesa X). Hoď ji na zem – strašidlo, které na ni šlápne, se zpomalí nebo omráčí. Za každý nalezený klíč dostaneš dalších 5.</div>
+    <div>🥿 Po škole je schováno <span>5 papučí</span>. Seber je a nasaď klávesou P – na 10 s tě strašidla neuvidí.</div>
     <div>🚪 Hlavní východ je ve vstupní hale naproti schodišti.</div>
     <div>🛗 Vedle schodiště je výtah: E nahoru, Q dolů, číslo patra (0 = přízemí).</div>
     <div>👻 Strašidlo chodí po celé škole, po schodech a jezdí i výtahem (vždy o patro). Pokaždé začne v jiném patře.</div>
@@ -217,7 +221,7 @@
     <div>🧑‍🎓 Ve škole jsou spolužáci. Když k nim dojdeš, prozradí ti, kde strašidlo je.</div>
     <div>💡 Občas na chodbách vypadne proud. Pak ti svítí jen baterka.</div>
     <div class="mobOnly">📱 <b>Na mobilu:</b> levým palcem chodíš (joystick), tažením prstu vpravo se rozhlížíš. Akce mají tlačítka vpravo dole, výtah a kantýna se ukážou samy, když jsi u nich. Hraj na šířku.</div>
-    <div class="deskOnly">🖱️ Myš rozhlížení (nebo šipky ← →) · WASD chůze · Shift / R běh (kup v kantýně) · X hod záchodem (nášlapná mina na strašidlo) · V hoď tančícího psa (max. 5) · B čůrání · G/H/J pozdravy v multiplayeru · I inventář · Esc pauza · M zvuk</div>
+    <div class="deskOnly">🖱️ Myš rozhlížení (nebo šipky ← →) · WASD chůze · Shift / R běh (kup v kantýně) · X polož propustku (past na strašidlo) · P nasaď papuče (10 s neviditelný) · V hoď tančícího psa (max. 5) · G/H/J pozdravy v multiplayeru · I inventář · Esc pauza · M zvuk</div>
   </div>
   <div><button id="enterBtn">Vstoupit do školy</button></div>
 </div></div>
@@ -1863,7 +1867,7 @@ function dropSplat(){ dm.position.set(G.x+(Math.random()-.5)*.4,G.y+0.03,G.z+(Ma
 var down={};
 var $=function(id){ return document.getElementById(id); };
 var state='start',clock=new THREE.Clock(),toastT=null;
-addEventListener('keydown',function(e){ if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')) return; down[e.code]=true; if(e.code==='KeyM'){ toggleMute(); return; } if(state!=='playing') return; if(e.code==='Escape'&&noLock){ state='paused'; $('pause').classList.remove('hidden'); SND.hudba.pause(); return; } if(e.code==='KeyI'||e.code==='Tab'){ if(e.preventDefault) e.preventDefault(); toggleInv(); return; } if(invOpen&&e.code==='Escape'){ toggleInv(false); return; } if(e.code==='KeyG'){ sendEmote('wave'); return; } if(e.code==='KeyH'){ sendEmote('dance'); return; } if(e.code==='KeyJ'){ sendEmote('cheer'); return; } if(e.code==='KeyV'){ spawnDog(); return; } if(e.code==='KeyX'){ throwToilet(); return; } if(e.code==='KeyF'){ doThrow(); return; }
+addEventListener('keydown',function(e){ if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')) return; down[e.code]=true; if(e.code==='KeyM'){ toggleMute(); return; } if(state!=='playing') return; if(e.code==='Escape'&&noLock){ state='paused'; $('pause').classList.remove('hidden'); SND.hudba.pause(); return; } if(e.code==='KeyI'||e.code==='Tab'){ if(e.preventDefault) e.preventDefault(); toggleInv(); return; } if(invOpen&&e.code==='Escape'){ toggleInv(false); return; } if(e.code==='KeyG'){ sendEmote('wave'); return; } if(e.code==='KeyH'){ sendEmote('dance'); return; } if(e.code==='KeyJ'){ sendEmote('cheer'); return; } if(e.code==='KeyV'){ spawnDog(); return; } if(e.code==='KeyX'){ throwToilet(); return; } if(e.code==='KeyP'){ useSlippers(); return; } if(e.code==='KeyF'){ doThrow(); return; }
   var base=E.state==='idle'?E.floor:E.target,t=null;
   if(inCab()){ if(e.code==='KeyE') t=base+1; else if(e.code==='KeyQ') t=base-1; else { var m=e.code.match(/^(Digit|Numpad)(\d)$/); if(m){ var d=+m[2]; t=d<=1?0:d-1; } } if(t!==null) E.target=Math.max(0,Math.min(FLOORS-1,t)); }
   else if((e.code==='KeyE'||e.code==='KeyQ')&&nearElevDoor()&&!G.riding){ E.target=Math.round(P0.y/H); }
@@ -1873,7 +1877,8 @@ addEventListener('keydown',function(e){ if(e.target&&(e.target.tagName==='INPUT'
 addEventListener('keyup',function(e){ down[e.code]=false; });
 var noLock=false,dragLook=false,lockWarned=false;
 function lockFail(){ noLock=true; if(state==='paused'){ state='playing'; $('pause').classList.add('hidden'); clock.getDelta(); musicPlay(); } if(!lockWarned&&(state==='playing')){ lockWarned=true; toast('Prohlížeč nepovolil zamknout myš. Rozhlížej se tažením myši se stisknutým levým tlačítkem nebo šipkami ← →. Pásku házej pravým tlačítkem nebo F.',8000); } }
-function lockPointer(){ if(noLock) return; try{ var p=canvas.requestPointerLock(); if(p&&p.catch) p.catch(function(){ lockFail(); }); }catch(e){ lockFail(); } setTimeout(function(){ if(state==='playing'&&document.pointerLockElement!==canvas) lockFail(); },1200); }
+function lockPointer(soft){ if(noLock) return; var fail=soft?softLockFail:lockFail; try{ var p=canvas.requestPointerLock(); if(p&&p.catch) p.catch(function(){ fail(); }); }catch(e){ fail(); } setTimeout(function(){ if(state==='playing'&&document.pointerLockElement!==canvas) fail(); },1200); }
+function softLockFail(){ if(state==='playing'&&!invOpen&&!noLock&&document.pointerLockElement!==canvas){ state='paused'; $('pause').classList.remove('hidden'); SND.hudba.pause(); } }
 var lastMX=null,lastMY=null,mouseX=-1;
 document.addEventListener('mousemove',function(e){ var locked=document.pointerLockElement===canvas;
   var dx=e.movementX,dy=e.movementY; if(typeof dx!=='number'||isNaN(dx)||(!locked&&dx===0&&dy===0&&lastMX!==null)){ dx=lastMX===null?0:e.clientX-lastMX; dy=lastMY===null?0:e.clientY-lastMY; }
@@ -1924,28 +1929,30 @@ function soundUpdate(dt){
 
 // ================= toilets (X) =================
 var TOIL=(function(){
-  function part(g,c,x,y,z,rx,ry,rz,sx,sy,sz){ return {g:g,c:c,m:new THREE.Matrix4().compose(new THREE.Vector3(x,y,z),new THREE.Quaternion().setFromEuler(new THREE.Euler(rx||0,ry||0,rz||0)),new THREE.Vector3(sx||1,sy||1,sz||1))}; }
-  var W=0xf4f4f2,S=0xe2e2df,CH=0xb8bcc0,WA=0x6fa8d6;
-  var parts=[
-    part(new THREE.CylinderGeometry(0.13,0.16,0.08,18),W,0,0.04,0.02),
-    part(new THREE.CylinderGeometry(0.2,0.14,0.26,18),W,0,0.2,0.03,0,0,0,1,1,1.18),
-    part(new THREE.TorusGeometry(0.17,0.035,8,22),S,0,0.335,0.03,Math.PI/2,0,0,1,1.18,1),
-    part(new THREE.CircleGeometry(0.15,18),WA,0,0.3,0.03,-Math.PI/2,0,0,1,1.15,1),
-    part(new THREE.CylinderGeometry(0.19,0.19,0.025,18),S,0,0.53,-0.19,-1.35,0,0,1,1,1.18),
-    part(new THREE.BoxGeometry(0.42,0.34,0.16),W,0,0.52,-0.27),
-    part(new THREE.BoxGeometry(0.45,0.04,0.19),W,0,0.71,-0.27),
-    part(new THREE.CylinderGeometry(0.03,0.03,0.025,12),CH,0,0.74,-0.27)
-  ];
-  var pos=[],nor=[],col=[];
-  parts.forEach(function(p){ var g=p.g.index?p.g.toNonIndexed():p.g; g.applyMatrix4(p.m); var pa=g.attributes.position.array,na=g.attributes.normal.array,c=new THREE.Color(p.c); for(var i=0;i<pa.length;i+=3){ pos.push(pa[i],pa[i+1],pa[i+2]); nor.push(na[i],na[i+1],na[i+2]); col.push(c.r,c.g,c.b); } });
-  var geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3));
-  var mat=new THREE.MeshStandardMaterial({vertexColors:true,roughness:0.3,metalness:0.05,emissive:0x1a1a1a});
+  var c=document.createElement('canvas'); c.width=512; c.height=342; var x=c.getContext('2d');
+  x.fillStyle='#fbfbf8'; x.fillRect(0,0,512,342); x.strokeStyle='#111'; x.lineWidth=3; x.strokeRect(10,10,492,322);
+  x.beginPath(); x.moveTo(206,10); x.lineTo(206,332); x.moveTo(10,74); x.lineTo(206,74); x.moveTo(206,110); x.lineTo(502,110); x.moveTo(206,210); x.lineTo(502,210); x.stroke();
+  x.fillStyle='#111'; x.textBaseline='middle'; x.font='bold 40px Poppins,Arial,sans-serif'; x.textAlign='center'; x.fillText('Propustka',108,44);
+  x.font='bold 17px Arial,sans-serif'; x.fillText('Důvod odchodu:',108,96); x.textAlign='left'; x.font='16px Arial,sans-serif';
+  ['k lékaři','služebně','soukromě'].forEach(function(t,i){ x.fillText(t,40,126+i*24); x.lineWidth=1.5; x.strokeRect(150,116+i*24,20,20); });
+  x.font='15px Arial,sans-serif';
+  [['Odchod:',' hod.',214],['Příchod:',' hod.',246],['V',' ',278],['Dne',' ',308]].forEach(function(r){ x.fillText(r[0]+' ..................'+r[1],22,r[2]); });
+  x.fillText('Příjmení: ...............................',216,40); x.fillText('Jméno: ..................................',216,80);
+  x.font='12px Arial,sans-serif'; x.textAlign='center'; x.fillText('Razítko a podpis vedoucího',354,196);
+  x.font='bold 12px Arial,sans-serif'; x.fillText('Potvrzení lékaře nebo úřadu',354,228); x.font='11px Arial,sans-serif'; x.fillText('Odchod: ........ hod.        razítko a podpis',354,318);
+  var tx=new THREE.CanvasTexture(c); tx.encoding=THREE.sRGBEncoding; tx.anisotropy=4;
+  var face=new THREE.MeshStandardMaterial({map:tx,color:0xbdbdb8,roughness:0.9,metalness:0,emissive:0x0c0c0c}),edge=new THREE.MeshStandardMaterial({color:0xbdbdb8,roughness:0.9,emissive:0x0c0c0c});
+  var geo=new THREE.BoxGeometry(0.7,0.012,0.47),mat=[edge,edge,face,face,edge,edge];
   var MAXT=3000,inst=new THREE.InstancedMesh(geo,mat,MAXT); inst.count=0; inst.frustumCulled=false; scene.add(inst);
   return {geo:geo,mat:mat,inst:inst,max:MAXT,fly:[],list:[],n:0,cd:0};
 })();
+var PASS=5,passCd=0;
+function updPassHud(){ $('passVal').textContent=String(PASS); $('passVal').style.color=PASS>0?'#f4f4f2':'#d26b5f'; }
 function toiletHitsWall(x,z,y){ var yy=y+0.05,r=0.14; for(var i=0;i<walls.length;i++){ var w=walls[i]; if(yy<w.yMin||yy>=w.yMax) continue; if(x>w.minX-r&&x<w.maxX+r&&z>w.minZ-r&&z<w.maxZ+r) return true; } return false; }
 function throwToilet(){
-  if(state!=='playing'||TOIL.cd>0) return; TOIL.cd=0.3;
+  if(state!=='playing'||TOIL.cd>0) return;
+  if(PASS<=0){ if(passCd<=0){ toast('🎫 Došly ti propustky. Dalších 5 dostaneš za každý nalezený klíč.'); passCd=2.5; } return; }
+  TOIL.cd=0.3; PASS--; updPassHud(); if(invOpen) renderInv();
   var cp=Math.cos(P0.pitch),fx=-Math.sin(P0.yaw)*cp,fy=Math.sin(P0.pitch),fz=-Math.cos(P0.yaw)*cp;
   var m=new THREE.Mesh(TOIL.geo,TOIL.mat); m.scale.setScalar(0.6);
   var o={m:m,x:P0.x+fx*0.45,y:P0.y+EYE-0.35,z:P0.z+fz*0.45,vx:fx*6.5,vy:fy*6.5+2.2,vz:fz*6.5,fy:P0.y,rx:rnd(-6,6),rz:rnd(-6,6),yaw:P0.yaw+rnd(-0.6,0.6)};
@@ -1954,7 +1961,7 @@ function throwToilet(){
 }
 var tDummy=new THREE.Object3D();
 function toiletsUpdate(dt){
-  if(TOIL.cd>0) TOIL.cd-=dt;
+  if(TOIL.cd>0) TOIL.cd-=dt; if(passCd>0) passCd-=dt;
   if(G.slow>0){ G.slow-=dt; if(G.slow<=0){ G.slow=0; toast('Strašidlo už zase běží naplno!'); } }
   mineUpdate(dt);
   for(var i=TOIL.fly.length-1;i>=0;i--){ var o=TOIL.fly[i];
@@ -1965,7 +1972,7 @@ function toiletsUpdate(dt){
     var g=groundAt(o.x,o.z,o.fy);
     if(o.y<=g){
       scene.remove(o.m); TOIL.fly.splice(i,1);
-      if(TOIL.n<TOIL.max){ tDummy.position.set(o.x,g+0.005,o.z); tDummy.rotation.set(0,o.yaw,0); tDummy.scale.setScalar(0.6); tDummy.updateMatrix(); TOIL.inst.setMatrixAt(TOIL.n,tDummy.matrix); TOIL.list.push({x:o.x,y:g,z:o.z,i:TOIL.n,arm:0.6}); TOIL.n++; TOIL.inst.count=TOIL.n; TOIL.inst.instanceMatrix.needsUpdate=true; }
+      if(TOIL.n<TOIL.max){ tDummy.position.set(o.x,g+0.028,o.z); tDummy.rotation.set(0,o.yaw,0); tDummy.scale.setScalar(0.6); tDummy.updateMatrix(); TOIL.inst.setMatrixAt(TOIL.n,tDummy.matrix); TOIL.list.push({x:o.x,y:g,z:o.z,i:TOIL.n,arm:0.6}); TOIL.n++; TOIL.inst.count=TOIL.n; TOIL.inst.instanceMatrix.needsUpdate=true; }
       continue; }
     o.m.position.set(o.x,o.y,o.z); o.m.rotation.x+=o.rx*dt; o.m.rotation.z+=o.rz*dt; o.m.rotation.y=o.yaw;
   }
@@ -1973,7 +1980,7 @@ function toiletsUpdate(dt){
 
 // ================= toilet mines =================
 var boomL=new THREE.PointLight(0xffb36b,0,10,2); scene.add(boomL);
-var booms=[],shardGeo=new THREE.BoxGeometry(0.09,0.05,0.07),dropGeo=new THREE.SphereGeometry(0.035,6,5);
+var booms=[],shardGeo=new THREE.BoxGeometry(0.1,0.006,0.07),dropGeo=new THREE.SphereGeometry(0.035,6,5);
 var shardMat=new THREE.MeshStandardMaterial({color:0xf4f4f2,roughness:.3,emissive:0x222222}),dropMat=new THREE.MeshBasicMaterial({color:0x6fa8d6});
 var AC=null;
 function boomSound(dist){ if(muted) return; try{ AC=AC||new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended') AC.resume();
@@ -1988,7 +1995,7 @@ function explodeAt(x,y,z){
   boomL.position.set(x,y+0.7,z); boomL.intensity=5;
   var parts=[];
   for(var i=0;i<20;i++){ var m=new THREE.Mesh(shardGeo,shardMat); m.position.set(x,y+0.3,z); scene.add(m); var a=Math.random()*6.283,sp=rnd(1.5,4.5); parts.push({m:m,vx:Math.cos(a)*sp,vy:rnd(2.5,6),vz:Math.sin(a)*sp,rx:rnd(-12,12),ry:rnd(-12,12),y0:y}); }
-  for(var j=0;j<16;j++){ var d=new THREE.Mesh(dropGeo,dropMat); d.position.set(x,y+0.3,z); scene.add(d); var a2=Math.random()*6.283,sp2=rnd(0.8,3); parts.push({m:d,vx:Math.cos(a2)*sp2,vy:rnd(3,6.5),vz:Math.sin(a2)*sp2,rx:0,ry:0,y0:y}); }
+  for(var j=0;j<16;j++){ var d=new THREE.Mesh(shardGeo,shardMat); d.position.set(x,y+0.3,z); scene.add(d); var a2=Math.random()*6.283,sp2=rnd(0.8,3); parts.push({m:d,vx:Math.cos(a2)*sp2,vy:rnd(3,6.5),vz:Math.sin(a2)*sp2,rx:rnd(-12,12),ry:rnd(-12,12),y0:y}); }
   var ring=new THREE.Mesh(new THREE.SphereGeometry(0.5,16,10),new THREE.MeshBasicMaterial({color:0xffd9a0,transparent:true,opacity:0.75,depthWrite:false})); ring.position.set(x,y+0.4,z); scene.add(ring);
   booms.push({t:0,parts:parts,ring:ring});
   var dd=Math.hypot(P0.x-x,P0.z-z); if(dd<10&&Math.abs(P0.y-y)<2){ $('vignette').style.background='radial-gradient(ellipse at center, rgba(255,210,150,.35) 0%, rgba(255,140,40,.55) 100%)'; $('vignette').style.opacity=Math.max(0.2,0.7-dd/14); setTimeout(function(){ $('vignette').style.background=''; },180); }
@@ -1998,11 +2005,11 @@ function mineUpdate(dt){
     if(Math.abs(G.y-t.y)<1.2&&Math.hypot(G.x-t.x,G.z-t.z)<0.75){
       removeToilet(k); explodeAt(t.x,t.y,t.z);
       var ctrl=!MP||(MP.runner&&MP.mode!=='versus')||(MP.mode==='versus'&&MP.role==='g');
-      if(ctrl){ if(Math.random()<0.35&&!(G.stun>0)){ stunGhost(); G.stun=3; toast('BUM! Strašidlo šláplo na záchod a je lehce omráčené (3 s)!',3500); } else { G.slow=Math.max(G.slow||0,5); toast('BUM! Strašidlo šláplo na záchod a je zpomalené (5 s)!',3500); } }
-      else toast('BUM! Strašidlo šláplo na záchod!');
+      if(ctrl){ if(Math.random()<0.35&&!(G.stun>0)){ stunGhost(); G.stun=3; toast('BUM! Strašidlo šláplo na propustku a je lehce omráčené (3 s)!',3500); } else { G.slow=Math.max(G.slow||0,5); toast('BUM! Strašidlo šláplo na propustku a je zpomalené (5 s)!',3500); } }
+      else toast('BUM! Strašidlo šláplo na propustku!');
     } else if(G2.active&&Math.abs(G2.y-t.y)<1.2&&Math.hypot(G2.x-t.x,G2.z-t.z)<0.75){
       removeToilet(k); explodeAt(t.x,t.y,t.z);
-      if(!MP||(MP.runner&&MP.mode!=='versus')){ if(Math.random()<0.35&&!(G2.stun>0)) stunG2(3); else { G2.slow=Math.max(G2.slow||0,5); toast('BUM! '+GNAME[G2.id]+' šlápl na záchod a je zpomalený (5 s)!',3500); } } else toast('BUM!');
+      if(!MP||(MP.runner&&MP.mode!=='versus')){ if(Math.random()<0.35&&!(G2.stun>0)) stunG2(3); else { G2.slow=Math.max(G2.slow||0,5); toast('BUM! '+GNAME[G2.id]+' šlápl na propustku a je zpomalený (5 s)!',3500); } } else toast('BUM!');
     } }
   for(var b=booms.length-1;b>=0;b--){ var B=booms[b]; B.t+=dt;
     B.parts.forEach(function(p){ p.vy-=9.8*dt; p.m.position.x+=p.vx*dt; p.m.position.y+=p.vy*dt; p.m.position.z+=p.vz*dt; if(p.m.position.y<p.y0+0.03){ p.m.position.y=p.y0+0.03; p.vx*=0.6; p.vz*=0.6; p.vy=0; } p.m.rotation.x+=p.rx*dt; p.m.rotation.y+=p.ry*dt; });
@@ -2172,62 +2179,46 @@ function dogUpdate0(dt){
   if(anyDance&&!TUNE.on) startTune(); else if(!anyDance&&TUNE.on) stopTune();
 }
 
-// ================= peeing (B) =================
-var PEE=(function(){
-  var n=320,pos=new Float32Array(n*3),vel=new Float32Array(n*3),life=new Float32Array(n),fy=new Float32Array(n);
-  for(var i=0;i<n;i++){ pos[i*3+1]=-99; life[i]=0; }
-  var geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-  var pts=new THREE.Points(geo,new THREE.PointsMaterial({color:0xf2d64b,size:0.055,transparent:true,opacity:0.85,depthWrite:false})); pts.frustumCulled=false; scene.add(pts);
-  var pt=tex(cnv(128,128,function(c,w,h){ var g=c.createRadialGradient(64,64,6,64,64,60); g.addColorStop(0,'rgba(240,205,60,.75)'); g.addColorStop(0.7,'rgba(230,190,40,.45)'); g.addColorStop(1,'rgba(230,190,40,0)'); c.fillStyle=g; for(var k=0;k<6;k++){ c.beginPath(); c.ellipse(64+rnd(-14,14),64+rnd(-14,14),rnd(30,52),rnd(22,40),Math.random()*3,0,7); c.fill(); } }));
-  var MAXP=700,pud=new THREE.InstancedMesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:pt,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-3}),MAXP); pud.count=0; pud.frustumCulled=false; scene.add(pud);
-  return {n:n,pos:pos,vel:vel,life:life,fy:fy,geo:geo,ptr:0,emit:0,pud:pud,maxp:MAXP,pn:0,pptr:0,decT:0,src:null,g:null,last:null};
-})();
-var pDummy=new THREE.Object3D();
-function addPuddle(x,y,z){ var P=PEE; if(P.last&&Math.hypot(P.last.x-x,P.last.z-z)<0.12&&Math.abs(P.last.y-y)<0.2){ P.last.s=Math.min(0.9,P.last.s+0.015); pDummy.position.set(P.last.x,P.last.y,P.last.z); pDummy.rotation.set(-Math.PI/2,0,P.last.r); pDummy.scale.setScalar(P.last.s); pDummy.updateMatrix(); P.pud.setMatrixAt(P.last.i,pDummy.matrix); P.pud.instanceMatrix.needsUpdate=true; return; }
-  var i=P.pptr; P.pptr=(P.pptr+1)%P.maxp; if(P.pn<P.maxp){ P.pn++; P.pud.count=P.pn; }
-  P.last={x:x,y:y+0.004,z:z,s:rnd(0.18,0.28),r:Math.random()*6.3,i:i}; pDummy.position.set(x,y+0.004,z); pDummy.rotation.set(-Math.PI/2,0,P.last.r); pDummy.scale.setScalar(P.last.s); pDummy.updateMatrix(); P.pud.setMatrixAt(i,pDummy.matrix); P.pud.instanceMatrix.needsUpdate=true; }
-function peeSoundOn(){ if(muted||!ac()||PEE.src) return; var s=AC.createBufferSource(); s.buffer=noiseBuf(); s.loop=true; var f=AC.createBiquadFilter(); f.type='bandpass'; f.frequency.value=2600; f.Q.value=0.9; var f2=AC.createBiquadFilter(); f2.type='highpass'; f2.frequency.value=900; var g=AC.createGain(); g.gain.value=0.0001; g.gain.setTargetAtTime(0.32,AC.currentTime,0.06);
-  var l=AC.createOscillator(),lg=AC.createGain(); l.frequency.value=7; lg.gain.value=0.08; l.connect(lg); lg.connect(g.gain); l.start(); s.connect(f); f.connect(f2); f2.connect(g); g.connect(AC.destination); s.start(); PEE.src=s; PEE.g=g; PEE.lfo=l; }
-function peeSoundOff(){ if(!PEE.src) return; var s=PEE.src,g=PEE.g,l=PEE.lfo; PEE.src=null; try{ g.gain.setTargetAtTime(0,AC.currentTime,0.05); }catch(e){} setTimeout(function(){ try{ s.stop(); l.stop(); g.disconnect(); }catch(e){} },400); }
-setInterval(function(){ if(PEE.src&&(state!=='playing'||!down.KeyB||muted)) peeSoundOff(); },150);
-function peeUpdate(dt){
-  var P=PEE,on=!!down.KeyB&&state==='playing';
-  if(on){ peeSoundOn(); P.emit+=dt*110;
-    var cp=Math.cos(P0.pitch),fx=-Math.sin(P0.yaw)*cp,fyv=Math.sin(P0.pitch),fz=-Math.cos(P0.yaw)*cp,wob=Math.sin(performance.now()*0.006)*0.12;
-    while(P.emit>=1){ P.emit-=1; var i=P.ptr; P.ptr=(P.ptr+1)%P.n;
-      P.pos[i*3]=P0.x+fx*0.25; P.pos[i*3+1]=P0.y+0.95; P.pos[i*3+2]=P0.z+fz*0.25;
-      var sp=3.6+rnd(-0.2,0.2); P.vel[i*3]=fx*sp+(Math.random()-.5)*0.18+Math.cos(P0.yaw)*wob; P.vel[i*3+1]=fyv*sp+1.3+(Math.random()-.5)*0.15; P.vel[i*3+2]=fz*sp+(Math.random()-.5)*0.18-Math.sin(P0.yaw)*wob;
-      P.life[i]=2.5; P.fy[i]=P0.y; } }
-  for(var k=0;k<P.n;k++){ if(P.life[k]<=0) continue; P.life[k]-=dt;
-    P.vel[k*3+1]-=9.8*dt; var nx=P.pos[k*3]+P.vel[k*3]*dt,ny=P.pos[k*3+1]+P.vel[k*3+1]*dt,nz=P.pos[k*3+2]+P.vel[k*3+2]*dt;
-    if(toiletHitsWall(nx,nz,Math.max(P.fy[k],ny-0.05))){ P.vel[k*3]*=-0.15; P.vel[k*3+2]*=-0.15; nx=P.pos[k*3]; nz=P.pos[k*3+2]; }
-    var g=groundAt(nx,nz,P.fy[k]);
-    if(ny<=g||P.life[k]<=0){ if(ny<=g){ P.decT-=1; if(P.decT<=0){ addPuddle(nx,g,nz); P.decT=3; } } P.life[k]=0; P.pos[k*3+1]=-99; continue; }
-    P.pos[k*3]=nx; P.pos[k*3+1]=ny; P.pos[k*3+2]=nz; }
-  P.geo.attributes.position.needsUpdate=true;
-}
-
 // ================= inventory =================
 var ITEMS={
-  drink:{ic:'🥤',name:'Energiťák',desc:'Vypiješ a máš +20 s běhu.',use:function(){ runTime+=20; runMax=Math.max(runMax,runTime); lastRunS=-1; toast('🥤 Glo glo glo… +20 s běhu! (drž Shift)'); return true; }},
-  choco:{ic:'🍫',name:'Čokoláda',desc:'Sníš ji a máš +10 s běhu.',use:function(){ runTime+=10; runMax=Math.max(runMax,runTime); lastRunS=-1; toast('🍫 Mňam! +10 s běhu.'); return true; }},
   battery:{ic:'🔋',name:'Baterie',desc:'Na 45 s mnohem silnější baterka – posvítíš si daleko.',use:function(){ BATT=45; toast('🔋 Baterka svítí naplno na 45 s!'); return true; }},
-  bell:{ic:'🔔',name:'Školní zvonek',desc:'Zazvoní tam, kde stojíš, a na 10 s k sobě přiláká strašidlo. Pak rychle pryč!',use:function(){ ringBell(P0.x,P0.y,P0.z,true); return true; }}
+  bell:{ic:'🔔',name:'Školní zvonek',desc:'Zazvoní tam, kde stojíš, a na 10 s k sobě přiláká strašidlo. Pak rychle pryč!',use:function(){ ringBell(P0.x,P0.y,P0.z,true); return true; }},
+  slippers:{ic:'🥿',name:'Papuče',desc:'Nasadíš si je (klávesa P) a na 10 s tě strašidla neuvidí.',use:function(){ if(INVIS>0){ toast('🥿 Papuče už máš na nohou.'); return false; } wearSlippers(); return true; }}
 };
-var ITEMKEYS=Object.keys(ITEMS),INV=[],INVMAX=8,STACK=5,invOpen=false,BATT=0,pickups=[],LURE=null;
+var INVIS=0;
+function wearSlippers(){ INVIS=10; G.path=[]; G.timer=0; if(G2.active){ G2.path=[]; G2.timer=0; } $('invisBox').style.display=''; $('invisVal').textContent='10 s'; $('invisFx').style.opacity='1'; toast('🥿 Nasadil sis papuče – 10 s tě strašidla nevidí!',3000); if(MP) MP.lastSend=0; }
+function useSlippers(){ for(var i=0;i<INV.length;i++) if(INV[i].k==='slippers'){ useInv(i); return; } toast('🥿 Nemáš papuče. Najdi je někde ve škole.'); }
+function invisUpdate(dt){ if(!(INVIS>0)) return; INVIS-=dt; if(INVIS<=0){ INVIS=0; $('invisBox').style.display='none'; $('invisFx').style.opacity='0'; toast('🥿 Papuče přestaly působit – strašidla tě zase vidí!'); if(MP) MP.lastSend=0; } else $('invisVal').textContent=Math.ceil(INVIS)+' s'; }
+function makeSlippers(){
+  var parts=[],felt=0x3d3d40,dark=0x2a2a2c,inner=0x9b9b9e,stitch=0xcfcfcf;
+  function add(geo,col,px,py,pz,sx,sy,sz,ry){ var g=geo.index?geo.toNonIndexed():geo; g.applyMatrix4(new THREE.Matrix4().compose(new THREE.Vector3(px,py,pz),new THREE.Quaternion().setFromEuler(new THREE.Euler(0,ry||0,0)),new THREE.Vector3(sx,sy,sz))); parts.push({g:g,c:col}); }
+  [-1,1].forEach(function(sd){ var ox=sd*0.075,ry=sd*0.08;
+    add(new THREE.CylinderGeometry(1,1,1,24),dark,ox,0.012,0,0.062,0.024,0.145,ry);
+    add(new THREE.CylinderGeometry(1,1,1,24),stitch,ox,0.026,0,0.064,0.004,0.147,ry);
+    add(new THREE.CylinderGeometry(1,1,1,24),inner,ox,0.03,0,0.056,0.004,0.138,ry);
+    add(new THREE.SphereGeometry(1,20,10,0,Math.PI*2,0,Math.PI/2),felt,ox-Math.sin(ry)*0.055,0.028,-0.055,0.064,0.06,0.09,ry); });
+  var pos=[],nor=[],col=[]; parts.forEach(function(p){ var pa=p.g.attributes.position.array,na=p.g.attributes.normal.array,c=new THREE.Color(p.c).convertSRGBToLinear(); for(var i=0;i<pa.length;i+=3){ pos.push(pa[i],pa[i+1],pa[i+2]); nor.push(na[i],na[i+1],na[i+2]); col.push(c.r,c.g,c.b); } });
+  var geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3));
+  var grp=new THREE.Group(),m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,roughness:0.95,metalness:0,emissive:0x060607})); m.scale.setScalar(1.6); m.position.y=0.02; grp.add(m);
+  var glow=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:SLIPGLOW,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})); glow.rotation.x=-Math.PI/2; glow.position.y=0.022; grp.add(glow); return grp; }
+var SLIPGLOW=(function(){ var c=document.createElement('canvas'); c.width=c.height=128; var x=c.getContext('2d'),g=x.createRadialGradient(64,64,4,64,64,62); g.addColorStop(0,'rgba(255,225,150,.55)'); g.addColorStop(1,'rgba(255,215,120,0)'); x.fillStyle=g; x.fillRect(0,0,128,128); return new THREE.CanvasTexture(c); })();
+function spawnSlippers(){ var fl=[]; for(var f=0;f<FLOORS;f++) fl.push(f); shuffle(fl); var placed=0;
+  for(var t=0;t<FLOORS*4&&placed<5;t++){ var ff=fl[t%FLOORS],sp=freeSpot(ff); if(!sp) continue; var g=makeSlippers(); g.position.set(sp.x,ff*H+0.01,sp.z); g.rotation.y=Math.random()*6.283; scene.add(g); pickups.push({k:'slippers',m:g,x:sp.x,y:ff*H,z:sp.z,got:false,floorItem:true}); placed++; } }
+var ITEMKEYS=['battery','bell'],INV=[],INVMAX=8,STACK=5,invOpen=false,BATT=0,pickups=[],LURE=null;
 function itemSprite(ic){ var c=document.createElement('canvas'); c.width=128; c.height=128; var x=c.getContext('2d'); var g=x.createRadialGradient(64,64,10,64,64,62); g.addColorStop(0,'rgba(255,240,180,.9)'); g.addColorStop(1,'rgba(255,220,120,0)'); x.fillStyle=g; x.fillRect(0,0,128,128); x.font='70px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif'; x.textAlign='center'; x.textBaseline='middle'; x.fillText(ic,64,68);
   var t=new THREE.CanvasTexture(c); var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true})); sp.scale.set(0.5,0.5,1); return sp; }
-function spawnItems(){ var n=14+Math.min(30,(MPNP-1)*2); for(var i=0;i<n;i++){ var f=Math.floor(Math.random()*FLOORS),sp=freeSpot(f),k=ITEMKEYS[Math.floor(Math.random()*ITEMKEYS.length)]; if(!sp) continue; var s=itemSprite(ITEMS[k].ic); s.position.set(sp.x,f*H+0.5,sp.z); scene.add(s); pickups.push({k:k,m:s,x:sp.x,y:f*H,z:sp.z,got:false}); } }
+function spawnItems(){ var n=7+Math.min(15,MPNP-1); for(var i=0;i<n;i++){ var f=Math.floor(Math.random()*FLOORS),sp=freeSpot(f),k=ITEMKEYS[Math.floor(Math.random()*ITEMKEYS.length)]; if(!sp) continue; var s=itemSprite(ITEMS[k].ic); s.position.set(sp.x,f*H+0.5,sp.z); scene.add(s); pickups.push({k:k,m:s,x:sp.x,y:f*H,z:sp.z,got:false}); } }
 function invAdd(k){ for(var i=0;i<INV.length;i++) if(INV[i].k===k&&INV[i].n<STACK){ INV[i].n++; return true; } if(INV.length>=INVMAX) return false; INV.push({k:k,n:1}); return true; }
 var invFullCd=0;
 function itemsUpdate(dt){
   if(invFullCd>0) invFullCd-=dt;
-  pickups.forEach(function(p,i){ if(p.got) return; p.m.position.y=p.y+0.5+Math.sin(performance.now()*0.003+i)*0.06;
+  pickups.forEach(function(p,i){ if(p.got) return; if(p.floorItem) p.m.rotation.y+=dt*0.5; else p.m.position.y=p.y+0.5+Math.sin(performance.now()*0.003+i)*0.06;
     if(!(MP&&MP.role==='g')&&Math.abs(P0.y-p.y)<1&&Math.hypot(P0.x-p.x,P0.z-p.z)<0.8){
-      if(invAdd(p.k)){ p.got=true; scene.remove(p.m); if(MP) MP.ig.push(i); toast('🎒 Do inventáře: '+ITEMS[p.k].ic+' '+ITEMS[p.k].name+' (I = otevřít)'); if(invOpen) renderInv(); }
+      if(invAdd(p.k)){ p.got=true; scene.remove(p.m); if(MP) MP.ig.push(i); toast('🎒 Do inventáře: '+ITEMS[p.k].ic+' '+ITEMS[p.k].name+(p.k==='slippers'?' · P = nasadit (10 s neviditelný)':' (I = otevřít)')); if(invOpen) renderInv(); }
       else if(invFullCd<=0){ toast('🎒 Inventář je plný!'); invFullCd=3; } } });
   if(BATT>0){ BATT-=dt; torch.intensity=2.6; torch.distance=36; torch.angle=0.72; if(BATT<=0){ BATT=0; torch.intensity=1.4; torch.distance=22; torch.angle=0.55; toast('🔋 Baterie došla.'); } }
   if(LURE){ LURE.t-=dt; if(LURE.t<=0) LURE=null; }
+  invisUpdate(dt);
 }
 function ringBell(x,y,z,mine){
   LURE={x:x,y:y,z:z,t:10}; G.path=[]; G.timer=0;
@@ -2237,7 +2228,7 @@ function ringBell(x,y,z,mine){
   for(var r=0;r<14;r++){ var tt=t+r*0.11; [1,2.76,5.4].forEach(function(m,j){ osc(o,'sine',1320*m*(1+j*0.002),tt,0.002,0.25/(j+1),0.5); }); }
 }
 function renderInv(){
-  var fx=[['🔑','Klíče',keysGot+' / 3'],['🪙','Mince',String(coinCount)],['🧻','Lepicí páska',String(ammo)+(ammo>0?(throwReady?' · připravená':' · po dalším klíči'):'')]];
+  var fx=[['🔑','Klíče',keysGot+' / 3'],['🪙','Mince',String(coinCount)],['🎫','Propustky',String(PASS)],['🧻','Lepicí páska',String(ammo)+(ammo>0?(throwReady?' · připravená':' · po dalším klíči'):'')]];
   $('invFixed').innerHTML=fx.map(function(f){ return '<div class="ifx"><span class="iic">'+f[0]+'</span><div><b>'+f[1]+'</b><br><span>'+f[2]+'</span></div></div>'; }).join('');
   var h=''; for(var i=0;i<INVMAX;i++){ var it=INV[i]; if(it){ var d=ITEMS[it.k]; h+='<button class="islot" data-i="'+i+'" title="'+d.desc+'"><span class="iic">'+d.ic+'</span><span class="inm">'+d.name+'</span>'+(it.n>1?'<span class="icnt">'+it.n+'</span>':'')+'</button>'; } else h+='<div class="islot empty"></div>'; }
   $('invGrid').innerHTML=h;
@@ -2246,7 +2237,7 @@ function useInv(i){ var it=INV[i]; if(!it||state!=='playing') return; var d=ITEM
 function toggleInv(force){
   var open=force!==undefined?force:!invOpen; if(open===invOpen) return; invOpen=open;
   if(open){ renderInv(); $('inv').classList.remove('hidden'); $('invInfo').textContent=TOUCH.on?'Ťukni na předmět a použiješ ho.':'Klikni na předmět a použiješ ho. Zavřeš klávesou I nebo Esc.'; if(document.pointerLockElement===canvas) document.exitPointerLock(); }
-  else { $('inv').classList.add('hidden'); if(state==='playing'&&!noLock) lockPointer(); }
+  else { $('inv').classList.add('hidden'); if(state==='playing'&&!noLock) lockPointer(true); }
 }
 $('invGrid').addEventListener('click',function(e){ var b=e.target.closest?e.target.closest('.islot'):null; if(b&&b.getAttribute('data-i')!=null) useInv(+b.getAttribute('data-i')); });
 $('invGrid').addEventListener('mouseover',function(e){ var b=e.target.closest?e.target.closest('.islot'):null; if(b&&b.getAttribute('data-i')!=null){ var it=INV[+b.getAttribute('data-i')]; if(it) $('invInfo').textContent=ITEMS[it.k].ic+' '+ITEMS[it.k].name+': '+ITEMS[it.k].desc; } });
@@ -2286,6 +2277,7 @@ for(f=0;f<FLOORS;f++) spawnTape(f);
 for(var et=0;et<4+Math.min(30,Math.max(0,MPNP-3)*2);et++) spawnTape(Math.floor(Math.random()*FLOORS));
 spawnCoins();
 spawnItems();
+spawnSlippers();
 // ================= NPC =================
 var NPCS=[];
 var skinC=[0xf1c9a8,0xe0b08a,0xc68b62,0x8d5a3b,0xf5d3bc,0xa8704a], hairC=[0x2a1d14,0x5a3a20,0x9a6a3a,0xd8b878,0x111111,0x7a2a1a];
@@ -2731,13 +2723,14 @@ if(CFG){
   };
 }
 function chaseTarget(){
-  if(!MP) return P0;
-  var c=[]; if(MP.st==='alive'&&state==='playing'&&MP.role!=='g') c.push(P0);
-  MP.others.forEach(function(o){ if(o.st==='alive'&&o.role!=='g'&&typeof o.x==='number') c.push(o); });
+  if(!MP) return INVIS>0?{x:G.x+1e4,y:G.y,z:G.z}:P0;
+  var c=[]; if(MP.st==='alive'&&state==='playing'&&MP.role!=='g'&&!(INVIS>0)) c.push(P0);
+  MP.others.forEach(function(o){ if(o.st==='alive'&&o.role!=='g'&&!o.iv&&typeof o.x==='number') c.push(o); });
+  if(!c.length) return {x:G.x+1e4,y:G.y,z:G.z};
   var b=P0,bd=1e9; c.forEach(function(p){ var d=Math.hypot(p.x-G.x,p.z-G.z)+Math.abs(p.y-G.y)*4; if(d<bd){ bd=d; b=p; } }); return b;
 }
 function survivorReport(){
-  var best=null,bd=1e9; MP.others.forEach(function(o){ if(o.st!=='alive'||o.role==='g') return; var d=Math.hypot(o.x-P0.x,o.z-P0.z)+Math.abs(o.y-P0.y)*4; if(d<bd){ bd=d; best=o; } });
+  var best=null,bd=1e9; MP.others.forEach(function(o){ if(o.st!=='alive'||o.role==='g'||o.iv) return; var d=Math.hypot(o.x-P0.x,o.z-P0.z)+Math.abs(o.y-P0.y)*4; if(d<bd){ bd=d; best=o; } });
   if(!best) return 'Nikoho jsem neviděl…';
   var f=Math.max(0,Math.min(FLOORS-1,Math.round(best.y/H))); return esc(best.name||'Hráč')+' je '+floorLoc(f)+'.';
 }
@@ -2756,7 +2749,7 @@ function updateAvatars(dt){
   MP.others.forEach(function(o){ if(!o.pid||typeof o.x!=='number') return; seen[o.pid]=1; var a=MP.avatars[o.pid];
     if(a&&!a.lkDone&&o.lk){ scene.remove(a.m.g); a.m=makeNPC(o.lk); scene.add(a.m.g); a.lkDone=true; if(o.lk.pet&&o.lk.pet!=='none'&&!a.pet){ a.pet=makePet(o.lk.pet); scene.add(a.pet.g); } }
     if(!a){ var m=makeNPC(o.lk||undefined); scene.add(m.g); var tag=nameTag(o.name||'Hráč'); scene.add(tag); a=MP.avatars[o.pid]={m:m,tag:tag,x:o.x,y:o.y,z:o.z,t:0,lkDone:!!o.lk}; if(o.lk&&o.lk.pet&&o.lk.pet!=='none'){ a.pet=makePet(o.lk.pet); scene.add(a.pet.g); } }
-    var vis=o.st==='alive'&&o.role!=='g'; a.m.g.visible=vis; a.tag.visible=vis; if(a.pet) a.pet.g.visible=vis; if(!vis) return;
+    var vis=o.st==='alive'&&o.role!=='g'&&!(o.iv&&MP.role==='g'); a.m.g.visible=vis; a.tag.visible=vis; if(a.pet) a.pet.g.visible=vis; if(!vis) return;
     var k=Math.min(1,dt*10),ox=a.x,oz=a.z; if(Math.abs(o.y-a.y)>3) { a.x=o.x; a.y=o.y; a.z=o.z; } else { a.x+=(o.x-a.x)*k; a.y+=(o.y-a.y)*k; a.z+=(o.z-a.z)*k; }
     var sp=Math.hypot(a.x-ox,a.z-oz)/(dt||0.016); a.t+=dt*Math.min(8,sp*1.8);
     a.m.g.position.set(a.x,a.y,a.z); a.m.g.rotation.y=(o.yaw||0)+Math.PI;
@@ -2822,7 +2815,7 @@ function mpTick(dt){
   // send my state
   var now=performance.now();
   if(now-MP.lastSend>100&&(state!=='start')){ MP.lastSend=now;
-    var pr={pid:myPid,name:MP.name,ph:'game',role:MP.role,st:MP.st,x:+P0.x.toFixed(2),y:+P0.y.toFixed(2),z:+P0.z.toFixed(2),yaw:+P0.yaw.toFixed(2),g:MP.got,t:MP.tg,c:MP.cg,emo:MP.emo||null,lk:LOOK,it:MP.ig,lu:MP.lure||null,hit:MP.hit,gm:{mode:CFG.mode,code:CFG.code}};
+    var pr={pid:myPid,name:MP.name,ph:'game',role:MP.role,st:MP.st,x:+P0.x.toFixed(2),y:+P0.y.toFixed(2),z:+P0.z.toFixed(2),yaw:+P0.yaw.toFixed(2),g:MP.got,t:MP.tg,c:MP.cg,emo:MP.emo||null,lk:LOOK,it:MP.ig,lu:MP.lure||null,hit:MP.hit,iv:INVIS>0?1:0,gm:{mode:CFG.mode,code:CFG.code}};
     if(MP.mode==='versus'&&MP.role==='g'){ pr.s=+Math.max(0,G.stun||0).toFixed(1); pr.b={id:BO.id||0,d:+(BO.dur||0).toFixed(1)}; }
     pr.h2=MP.hit2||0; pr.gh2=(MP.runner&&MP.mode!=='versus'&&G2.active)?{x:+G2.x.toFixed(2),y:+G2.y.toFixed(2),z:+G2.z.toFixed(2),s:+Math.max(0,G2.stun||0).toFixed(1)}:null;
     pr.gh=(MP.runner&&MP.mode!=='versus')?{x:+G.x.toFixed(2),y:+G.y.toFixed(2),z:+G.z.toFixed(2),s:+Math.max(0,G.stun||0).toFixed(1),b:{id:BO.id||0,d:+(BO.dur||0).toFixed(1)}}:null;
@@ -2831,7 +2824,7 @@ function mpTick(dt){
 }
 
 // ================= mobile / touch controls =================
-var TOUCH={on:false,jx:0,jy:0,jid:null,lid:null,cx:0,cy:0,lx:0,ly:0,run:false,pee:false,ctxKey:''};
+var TOUCH={on:false,jx:0,jy:0,jid:null,lid:null,cx:0,cy:0,lx:0,ly:0,run:false,ctxKey:''};
 (function(){
   var coarse=false; try{ coarse=window.matchMedia('(pointer: coarse)').matches; }catch(e){}
   if(!coarse) return;
@@ -2853,7 +2846,7 @@ var TOUCH={on:false,jx:0,jy:0,jid:null,lid:null,cx:0,cy:0,lx:0,ly:0,run:false,pe
   document.addEventListener('touchend',endT); document.addEventListener('touchcancel',endT);
   function btn(id,fn){ $(id).addEventListener('touchstart',function(e){ e.preventDefault(); e.stopPropagation(); if(state==='playing') fn(); },{passive:false}); $(id).addEventListener('click',function(e){ e.preventDefault(); }); }
   btn('tbRun',function(){ TOUCH.run=!TOUCH.run; down.ShiftLeft=TOUCH.run; $('tbRun').classList.toggle('on',TOUCH.run); });
-  btn('tbPee',function(){ TOUCH.pee=!TOUCH.pee; down.KeyB=TOUCH.pee; $('tbPee').classList.toggle('on',TOUCH.pee); });
+  btn('tbSlip',function(){ fireKey('KeyP'); });
   btn('tbTape',function(){ fireKey('KeyF'); });
   btn('tbToilet',function(){ fireKey('KeyX'); });
   btn('tbDog',function(){ fireKey('KeyV'); });
@@ -3031,8 +3024,9 @@ function spawnG2(at){
 function stunG2(sec){ if(!G2.active) return; sfx(SND.bolest); G2.stun=sec||10; G2.path=[]; setG2Look(true); toast('Zásah! '+GNAME[G2.id]+' je omráčený ('+Math.ceil(G2.stun)+' s).'); }
 function bfs2(s,g){ if(s===g) return []; var prev={},seen={},q=[s]; seen[s]=1; while(q.length){ var c=q.shift(); if(c===g) break; N[c].adj.forEach(function(n){ if(N[n].kind) return; if(!seen[n]){ seen[n]=1; prev[n]=c; q.push(n); } }); } if(!seen[g]) return []; var p=[],c2=g; while(c2!==s){ p.unshift(c2); c2=prev[c2]; } return p; }
 function chaseTargetFrom(gx,gy,gz){
-  var c=[]; if(!MP||(MP.st==='alive'&&state==='playing'&&MP.role!=='g')) c.push(P0);
-  if(MP) MP.others.forEach(function(o){ if(o.st==='alive'&&o.role!=='g'&&typeof o.x==='number') c.push(o); });
+  var c=[]; if((!MP||(MP.st==='alive'&&state==='playing'&&MP.role!=='g'))&&!(INVIS>0)) c.push(P0);
+  if(MP) MP.others.forEach(function(o){ if(o.st==='alive'&&o.role!=='g'&&!o.iv&&typeof o.x==='number') c.push(o); });
+  if(!c.length) return {x:gx+1e4,y:gy,z:gz};
   var b=P0,bd=1e9; c.forEach(function(p){ var d=Math.hypot(p.x-gx,p.z-gz)+Math.abs(p.y-gy)*4; if(d<bd){ bd=d; b=p; } }); return b; }
 function visibleFrom(gx,gy,gz,noCone){
   if(Math.abs(gy-P0.y)>2.5) return false;
@@ -3070,7 +3064,7 @@ function g2Update(dt){
     if(G2.stun>0){ G2.stun-=dt; if(G2.stun<=0){ G2.stun=0; setG2Look(false); } } }
   G2.bob+=dt; ghost2.position.set(G2.x,G2.y+Math.sin(G2.bob*2.2)*0.08,G2.z); animRig2(dt);
   g2Aura.material.opacity=0.55+Math.sin(GT*5)*0.2+(G2.stun>0?-0.35:0); g2Aura.material.color.setHex(G2.stun>0?0x4fb6ff:0xffffff);
-  if(!(G2.stun>0)&&!(MP&&MP.role==='g')&&state==='playing'&&Math.hypot(G2.x-P0.x,G2.z-P0.z)<1.25&&Math.abs(G2.y-P0.y)<1.5) startDeath('g2');
+  if(!(G2.stun>0)&&!(INVIS>0)&&!(MP&&MP.role==='g')&&state==='playing'&&Math.hypot(G2.x-P0.x,G2.z-P0.z)<1.25&&Math.abs(G2.y-P0.y)<1.5) startDeath('g2');
   if(!(MP&&MP.role==='g')){ G2.visT-=dt; if(G2.visT<=0){ G2.visT=0.2; G2.seen=!(G2.stun>0)&&visibleFrom(G2.x,G2.y,G2.z,true); } if(G2.seen){ G2.laughT-=dt; if(G2.laughT<=0){ sfx(G2.laughs[G2.idx]); G2.idx=(G2.idx+1)%G2.laughs.length; G2.laughT=8; } } else G2.laughT=0; }
 }
 
@@ -3081,7 +3075,7 @@ function loop(){
   if(TOUCH.on) touchTick();
   flickT-=dt; if(BO.t>=0) flickMat.color.setHex(0x0c0c0c); else if(flickT<=0){ flickMat.color.setHex(Math.random()<0.35?0x111111:0x8f8a76); flickT=0.04+Math.random()*0.25; }
   if(state==='playing'){
-    elevUpdate(dt); tapeUpdate(dt); coinsUpdate(dt); itemsUpdate(dt); myPetUpdate(dt); g2Update(dt); toiletsUpdate(dt); dogUpdate(dt); peeUpdate(dt); soundUpdate(dt); npcUpdate(dt); lightsUpdate(dt);
+    elevUpdate(dt); tapeUpdate(dt); coinsUpdate(dt); itemsUpdate(dt); myPetUpdate(dt); g2Update(dt); toiletsUpdate(dt); dogUpdate(dt); soundUpdate(dt); npcUpdate(dt); lightsUpdate(dt);
     if(down.ArrowLeft) P0.yaw+=2.2*dt; if(down.ArrowRight) P0.yaw-=2.2*dt;
     if(!isFinite(P0.yaw)) P0.yaw=0; if(!isFinite(P0.pitch)) P0.pitch=0;
     var mx=(down.KeyD?1:0)-(down.KeyA?1:0)+TOUCH.jx, mz=(down.KeyW||down.ArrowUp?1:0)-(down.KeyS||down.ArrowDown?1:0)+TOUCH.jy; if(Math.abs(mx)<0.05) mx=0; if(Math.abs(mz)<0.05) mz=0;
@@ -3100,10 +3094,10 @@ function loop(){
     if(doorLocked&&hintCd<=0&&P0.y<1&&Math.abs(P0.x)<3&&P0.z>7.9){ toast('Hlavní dveře jsou zamčené. Potřebuješ všechny 3 klíče.'); hintCd=4; }
     keys.forEach(function(k,ki){ if(k.got||(MP&&MP.role==='g')) return; var dx=P0.x-k.x,dz=P0.z-k.z;
       if(dx*dx+dz*dz<1.7&&Math.abs(P0.y-k.y)<1.5){ k.got=true; scene.remove(k.mesh); keysGot++; if(MP) MP.got.push(ki); $('keyVal').textContent=keysGot+' / 3';
-        throwReady=true; updTapeHud();
-        if(keysGot===3){ doorLocked=false; toast('Máš 3 klíče! Běž dolů do vstupní haly k hlavnímu vchodu.',4500); }
-        else if(keysGot<3) toast('Klíč nalezen: '+TYPE[k.room.type].toLowerCase()+' '+k.room.label+' ('+keysGot+' / 3)'+(ammo>0?' · můžeš znovu hodit pásku':''));
-        else toast('Klíč navíc · můžeš znovu hodit pásku'); }
+        throwReady=true; updTapeHud(); PASS+=5; updPassHud();
+        if(keysGot===3){ doorLocked=false; toast('Máš 3 klíče! Běž dolů do vstupní haly k hlavnímu vchodu. 🎫 +5 propustek',4500); }
+        else if(keysGot<3) toast('Klíč nalezen: '+TYPE[k.room.type].toLowerCase()+' '+k.room.label+' ('+keysGot+' / 3)'+(ammo>0?' · můžeš znovu hodit pásku':'')+' · 🎫 +5 propustek');
+        else toast('Klíč navíc · můžeš znovu hodit pásku · 🎫 +5 propustek'); }
       else { k.mesh.rotation.y+=dt*1.2; k.mesh.position.y=k.baseY+Math.sin(performance.now()*.002+ki)*.08; } });
     if(!doorLocked){ exitOpen=Math.min(1,exitOpen+dt*0.8); leafL.rotation.y=-1.3*exitOpen; leafR.rotation.y=1.3*exitOpen; if(P0.y<1&&P0.z>ZS+0.6){ if(!MP) end('win','win'); else if(MP.role!=='g'){ state='win'; MP.st='out'; SND.hudba.pause(); document.exitPointerLock(); mpFinished('out'); } } }
 
@@ -3135,7 +3129,7 @@ function loop(){
     splTimer-=dt; if(splTimer<=0){ dropSplat(); splTimer=chasing?0.22:0.5; }
     for(var b=0;b<BC;b++){ if(bAge[b]>=bMax[b]) continue; bAge[b]+=dt; bVel[b*3+1]-=4.2*dt; bPos[b*3]+=bVel[b*3]*dt; bPos[b*3+1]+=bVel[b*3+1]*dt; bPos[b*3+2]+=bVel[b*3+2]*dt; if(bPos[b*3+1]<=bFloor[b]||bAge[b]>=bMax[b]){ bPos[b*3+1]=-99; bAge[b]=bMax[b]; } }
     bGeo.attributes.position.needsUpdate=true;
-    if(hd<1.25&&dy<1.5&&!(G.stun>0)&&!(MP&&MP.role==='g')) startDeath();
+    if(hd<1.25&&dy<1.5&&!(G.stun>0)&&!(INVIS>0)&&!(MP&&MP.role==='g')) startDeath();
     var vd=Math.sqrt(hd*hd+dy*dy*4);
     if(vd<9){ var tv=1-vd/9,pulse=.5+.5*Math.sin(performance.now()*.012); $('vignette').style.opacity=Math.min(.6,tv*.55+pulse*tv*.15); } else $('vignette').style.opacity=0;
   }

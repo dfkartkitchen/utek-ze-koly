@@ -23,7 +23,8 @@
   5 druhů bot a zvířecí parťák (kočka, sovička, dráček, sliz, liška).
 - Strašidla David nebo Daniel Dufek, po 4 minutách přijde druhý učitel.
 - Každé 3 minuty se strašidla na 30 s rozzuří a běhají stejně rychle jako hráč (odpočet na obrazovce).
-- Lepicí páska, záchodové miny, kantýna s během, inventář, pejsek, výtah, výpadky světla, bouřka.
+- Lepicí páska, propustky (past na strašidlo: 5 na začátku, +5 za každý klíč), papuče (5 ve škole, P = 10 s neviditelnosti),
+  kantýna s během, inventář (baterie, zvonek, papuče), pejsek, výtah, výpadky světla, bouřka.
 - Ovládání na PC i na mobilu (joystick + tlačítka).
 
 ## Multiplayer
@@ -38,7 +39,7 @@ Hraní: jeden hráč dá **Multiplayer → Založit hru** a pošle ostatním 4m�
 Hostitel vybere režim a spustí hru.
 
 ## Ovládání (PC)
-WASD/šipky pohyb · myš rozhlížení · Shift běh · F/klik páska · X záchod · V pes · B čůrání ·
+WASD/šipky pohyb · myš rozhlížení · Shift běh · F/klik páska · X propustka · P papuče · V pes ·
 I/Tab inventář · E/Q výtah · 1/2 kantýna · G/H/J pozdravy (multiplayer) · M zvuk · Esc pauza
 
 ## Aktualizace hry

@@ -5,7 +5,7 @@ compatibility_date = "2025-06-01"
 # Prázdné = povolit všechny weby. Po nasazení sem dej adresu hry, např.
 # "https://utek-ze-skoly.netlify.app,https://hra.dfkstudio.cz"
 [vars]
-ALLOWED_ORIGINS = ""
+ALLOWED_ORIGINS = "https://utekzeskoly.netlify.app"
 
 [[durable_objects.bindings]]
 name = "ROOMS"

@@ -33,8 +33,11 @@ zvuky (MP3 base64), textury z fotek školy. Žádné externí domény.
 - **Strašidla:** David Dufek / Daniel Dufek (výběr na startu), animovaný rig z fotky, modrá omráčená podoba, vlastní hlasy.
   Po 4 minutách se objeví druhý učitel (ten druhý z nabídky). Každé 3 minuty se strašidla na 30 s rozzuří
   a běhají rychlostí běžícího hráče (odpočet nahoře na obrazovce, varování 10 s předem).
-- **Předměty a mechaniky:** lepicí páska (omráčí na 10 s), záchodové miny (zpomalí / omráčí), mince a kantýna (běh),
-  inventář (pití, čokoláda, baterie, zvonek), pejsek, čůrání, výtah, výpadky světla, bouřka, tlukot srdce.
+- **Předměty a mechaniky:** lepicí páska (omráčí na 10 s), propustky – bílá kartička, past na strašidlo (zpomalí / omráčí;
+  hráč má na začátku 5 a za každý nalezený klíč +5; v kódu pořád objekt `TOIL` a funkce `throwToilet`, počet v `PASS`),
+  papuče (5 kusů náhodně po škole, v inventáři, klávesa P = 10 s neviditelný pro strašidla, `INVIS`, v multiplayeru `iv` v presence),
+  mince a kantýna (běh), inventář (baterie, zvonek, papuče), pejsek, výtah, výpadky světla, bouřka, tlukot srdce.
+  Čůrání a jídlo (čokoláda, energiťák) byly odstraněny.
 - **Vzhled:** hororový filtr (zrno, vinětace, barevné ladění, chromatická aberace při blízkosti strašidla), záře světel (jen PC),
   krev a nápisy na stěnách, prach. Ve škole je většinou světlo, zhasíná v nepravidelných intervalech.
 - **Multiplayer (claude.ai přes capability room, jinde přes vlastní relay server – viz níže):** lobby s 4místným kódem, až 20 hráčů, režimy Kooperace,
@@ -42,7 +45,7 @@ zvuky (MP3 base64), textury z fotek školy. Žádné externí domény.
 - **Mobil:** joystick, look pad, tlačítka akcí, fullscreen.
 
 ## 4. Ovládání (PC)
-WASD/šipky pohyb · myš rozhlížení · Shift běh · F/klik páska · X záchod · V pes · B čůrání · I/Tab inventář ·
+WASD/šipky pohyb · myš rozhlížení · Shift běh · F/klik páska · X propustka · P papuče · V pes · I/Tab inventář ·
 E/Q výtah · 1/2 kantýna · G/H/J pozdravy · M zvuk · Esc pauza
 
 ## 5. Poznámky pro další vývoj

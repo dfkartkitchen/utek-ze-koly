@@ -31,7 +31,12 @@ window.UTEK_RELAY = "wss://utek-ze-koly.tvuj-ucet.workers.dev";
 
 (pozor: `wss://` místo `https://`). Commit + push a Netlify hru nasadí s funkčním multiplayerem.
 
-## Zabezpečení (doporučeno)
+## Zabezpečení
+
+Nastaveno: server přijímá jen hru z `https://utekzeskoly.netlify.app`. Když přidáš další adresu (vlastní doménu),
+přidej ji do `ALLOWED_ORIGINS` (oddělenou čárkou) a pushni – Cloudflare server nasadí znovu.
+
+### Jak to nastavit
 
 V `wrangler.toml` nastav `ALLOWED_ORIGINS` na adresy, kde hra běží, a znovu spusť `npx wrangler deploy`:
 
