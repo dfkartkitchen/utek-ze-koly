@@ -7,6 +7,11 @@
 - **Lokálně:** stačí otevřít `index.html` v prohlížeči (singleplayer).
 - **Na webu:** Netlify z GitHubu – každý push do `main` se nasadí sám (nastavení je v `netlify.toml`).
 
+## Heslo
+Hra se po otevření zeptá na heslo a bez něj nejde hrát. Po správném zadání si ho prohlížeč pamatuje, dokud nezavřeš kartu.
+Heslo se mění v `index.html` v řádku `GATE_HASH=…` (vedle něj je funkce `gateHash`). Je to jen lehká zábrana, ne skutečné zabezpečení:
+soubor hry si stáhne každý návštěvník, takže zkušený člověk heslo obejde nebo z uloženého otisku dopočítá.
+
 ## Struktura
 | Soubor | K čemu je |
 |---|---|

@@ -54,5 +54,6 @@ E/Q výtah · 1/2 kantýna · G/H/J pozdravy · M zvuk · Esc pauza
   která napodobuje API claude.ai room (join/presence/peers/onPeers/leave) přes WebSocket; použije se, když chybí `window.claude`
   a `mp-config.js` obsahuje adresu `wss://…`. Při úpravách hry na claude.ai zachovej `relayNS`, `getRoomNS` a
   `<script src="mp-config.js"></script>` v `<head>`. V kódu nepoužívej `Math.random` pro síťové věci – je seedovaný kvůli společné mapě.
+- Při spuštění hry se zobrazí zámek s heslem (`#gate`, `UTEK_OK`, `GATE_HASH`; heslo je uložené jen jako otisk, zapamatuje se v `sessionStorage` klíč `utek_ok`, aby multiplayer po restartu stránky nechtěl heslo znovu). Při úpravách hry ho zachovej.
 - Repozitář: https://github.com/dfkartkitchen/utek-ze-koly (push do `main` = nasazení na Netlify).
 - Pokémony ani jiné chráněné postavy do hry nepřidávat.

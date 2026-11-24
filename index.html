@@ -35,6 +35,8 @@
   #cross{ position:fixed; top:50%; left:50%; width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:50%; background:rgba(233,223,216,.5); z-index:5; display:none; }
   .overlay{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse at center,#140a0c 0%,#020102 80%); z-index:10; text-align:center; padding:24px; }
   .overlay.hidden{ display:none; }
+  #gate{ z-index:100; } #gate .inp{ width:200px; text-align:center; font-size:26px; letter-spacing:.35em; } #gate .err{ color:var(--accent-glow); min-height:22px; margin-top:8px; font-size:15px; }
+  #gate.shake .card{ animation:gshake .35s; } @keyframes gshake{ 25%{ transform:translateX(-9px); } 75%{ transform:translateX(9px); } }
   .card{ max-width:560px; } .card h1{ font-size:48px; margin:0 0 6px; color:var(--accent-glow); text-shadow:0 0 18px rgba(255,91,77,.5); } .card h1.win{ color:var(--key); }
   .card p{ color:var(--ink-dim); font-size:15px; line-height:1.6; }
   .rules{ text-align:left; display:inline-block; font-size:14px; margin:10px 0; } .rules div{ margin:4px 0; } .rules span{ color:var(--key); }
@@ -169,6 +171,27 @@
 </head>
 <body>
 <canvas id="c"></canvas>
+<div class="overlay" id="gate"><form class="card" id="gateForm" autocomplete="off">
+  <h1 class="spooky">Útěk ze školy</h1>
+  <p>Hra je zamčená. Zadej heslo.</p>
+  <input id="gatePw" class="inp" type="password" inputmode="numeric" autocomplete="off" maxlength="12" aria-label="Heslo">
+  <div class="err" id="gateErr" role="alert"></div>
+  <button type="submit">Odemknout</button>
+</form></div>
+<script>
+// Heslo hry. Je to jen lehká zábrana: v souboru, který si prohlížeč stáhne, jde heslo vždy dohledat.
+var UTEK_OK=false,GATE_HASH=-2069928203;
+function gateHash(t){ var h=2166136261; for(var i=0;i<t.length;i++){ h^=t.charCodeAt(i); h=Math.imul(h,16777619); } return h|0; }
+(function(){
+  var g=document.getElementById('gate'),f=document.getElementById('gateForm'),inp=document.getElementById('gatePw'),err=document.getElementById('gateErr');
+  function open(){ UTEK_OK=true; g.style.display='none'; }
+  try{ if(sessionStorage.getItem('utek_ok')==='1'){ open(); return; } }catch(e){}
+  setTimeout(function(){ try{ inp.focus(); }catch(e){} },50);
+  f.addEventListener('submit',function(e){ e.preventDefault();
+    if(gateHash(inp.value.trim())===GATE_HASH){ try{ sessionStorage.setItem('utek_ok','1'); }catch(x){} open(); return; }
+    err.textContent='Špatné heslo.'; inp.value=''; g.classList.remove('shake'); void g.offsetWidth; g.classList.add('shake'); inp.focus(); });
+})();
+</script>
 <div id="touchUI">
   <div id="joyZone"></div><div id="lookPad"></div>
   <div id="joy"><div id="joyKnob"></div></div>
@@ -1888,7 +1911,7 @@ document.addEventListener('mousemove',function(e){ var locked=document.pointerLo
   P0.yaw-=dx*(locked?0.0022:0.004); P0.pitch-=dy*(locked?0.0022:0.003); var lim=Math.PI/2-0.05; P0.pitch=Math.max(-lim,Math.min(lim,P0.pitch)); });
 document.addEventListener('mouseleave',function(){ mouseX=-1; });
 function toast(msg,ms){ var t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(function(){ t.classList.remove('show'); },ms||2800); }
-function beginGame(){ try{ spawnMyPet(); }catch(e){ console.error(e); } $('select').classList.add('hidden'); state='playing'; musicPlay(); $('start').classList.add('hidden'); $('hud').style.display='flex'; $('cross').style.display='block'; lockPointer(); clock.getDelta(); toast('Ve škole je 5 klíčů, k útěku stačí 3. V každém patře leží lepicí páska. Pozor na '+(ghostName==='David'?'Davida Dufka':'Daniela Dufka')+'!',5000); }
+function beginGame(){ if(!UTEK_OK) return; try{ spawnMyPet(); }catch(e){ console.error(e); } $('select').classList.add('hidden'); state='playing'; musicPlay(); $('start').classList.add('hidden'); $('hud').style.display='flex'; $('cross').style.display='block'; lockPointer(); clock.getDelta(); toast('Ve škole je 5 klíčů, k útěku stačí 3. V každém patře leží lepicí páska. Pozor na '+(ghostName==='David'?'Davida Dufka':'Daniela Dufka')+'!',5000); }
 $('imgDavid').src=PHOTO.gDavid; $('imgDavidB').src=PHOTO.gDavidB; $('imgDan').src=PHOTO.gDan; $('imgDanB').src=PHOTO.gDanB;
 $('startBtn').onclick=function(){ $('modepick').classList.add('hidden'); $('start').classList.add('hidden'); $('select').classList.remove('hidden'); };
 $('enterBtn').onclick=function(){ showCreator(); };
@@ -2647,6 +2670,7 @@ $('mpBack2').onclick=function(){ try{ if(LB.room) LB.room.leave(); }catch(e){} l
 $('mpCreate').onclick=function(){ lobbyJoin(rid(4).toUpperCase(),true); };
 $('mpJoin').onclick=function(){ var c=($('mpCode').value||'').trim().toUpperCase().replace(/[^A-Z0-9]/g,''); if(c.length<3){ mpMsg('Zadej kód hry.'); return; } lobbyJoin(c,false); };
 function lobbyJoin(code,host){
+  if(!UTEK_OK) return;
   var name=($('mpName').value||'').trim().slice(0,16); if(!name){ mpMsg('Nejdřív zadej svoje jméno.'); return; }
   try{ localStorage.setItem('utek_name',name); }catch(e){}
   mpMsg('Připojuji…');
